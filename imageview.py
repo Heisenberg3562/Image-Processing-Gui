@@ -303,8 +303,6 @@ if __name__ == '__main__':
     imageViewer.show()
     sys.exit(app.exec_())
 
-
-# User input :
  
 # Resize:
 # Height ,width
