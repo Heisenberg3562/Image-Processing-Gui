@@ -140,9 +140,9 @@ class ImageViewer(QMainWindow):
                 QMessageBox.information(self, "IOA Image Viewer",
                         "Cannot load %s." % cdr)
                 return
-            self.imageLabel = QLabel()
             self.imageLabel.setPixmap(QPixmap.fromImage(Rimage))
             self.scaleFactor = 1.0
+            self.imageLabel.setScaledContents(True)
         except:
             pass
 
@@ -173,10 +173,11 @@ class ImageViewer(QMainWindow):
         except:
             pass
 
-    def imgCrop(self):
+    def imgCropFace(self):
         try:
             img = cv2.imread(self.directory)
             face_cascade = cv2.CascadeClassifier(r"FaceRcognition-master\haarcascade_frontalface_default.xml")
+            grey_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
             faces = face_cascade.detectMultiScale(grey_img,
             scaleFactor=1.05,
             minNeighbors=5)
