@@ -1,5 +1,6 @@
 import cv2
 import os 
+from PIL import Image
 from PyQt5.QtCore import QDir, Qt
 from PyQt5.QtGui import QImage, QPainter, QPalette, QPixmap
 from PyQt5.QtWidgets import (QAction, QApplication, QFileDialog, QLabel,
@@ -176,6 +177,10 @@ class ImageViewer(QMainWindow):
         try:
             img = cv2.imread(self.directory)
             face_cascade = cv2.CascadeClassifier(r"FaceRcognition-master\haarcascade_frontalface_default.xml")
+            faces = face_cascade.detectMultiScale(grey_img,
+            scaleFactor=1.05,
+            minNeighbors=5)
+            c=0
             for x,y,w,h in faces:
                 img = cv2.rectangle(img,(x,y),(x+w, y+w),(0,255,0),1)
                 cropped = img[y:y+h, x:x+w]
@@ -247,6 +252,7 @@ class ImageViewer(QMainWindow):
         self.aboutAct = QAction("&About", self, triggered=self.about)
 
         self.faceDetectAct = QAction("Face Detect",self,triggered=self.faceDetect,enabled=False)
+
 
         self.resizeAct = QAction("Resize",self,triggered=self.imgResize,enabled=False)
 
