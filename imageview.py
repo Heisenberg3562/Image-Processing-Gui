@@ -142,9 +142,7 @@ class ImageViewer(QMainWindow):
                 QMessageBox.information(self, "IOA Image Viewer",
                         "Cannot load %s." % cdr)
                 return
-            self.imageLabel.setBackgroundRole(QPalette.Base)
             self.imageLabel.setPixmap(QPixmap.fromImage(Rimage))
-            self.imageLabel.setSizePolicy(QSizePolicy.Ignored, QSizePolicy.Ignored)
         except:
             pass
 
