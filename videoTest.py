@@ -120,6 +120,6 @@ def main(haar_cascade_filepath):
 if __name__ == '__main__':
     script_dir = path.dirname(path.realpath(__file__))
     cascade_filepath = r'FaceRcognition-master\haarcascade_frontalface_default.xml'
-
+    
     cascade_filepath = path.abspath(cascade_filepath)
     main(cascade_filepath)
