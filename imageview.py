@@ -6,8 +6,6 @@ from PyQt5.QtWidgets import (QAction, QApplication, QFileDialog, QLabel,
         QMainWindow, QMenu, QMessageBox, QScrollArea, QSizePolicy,QInputDialog)
 from PyQt5.QtPrintSupport import QPrintDialog, QPrinter
 
-
-
 class ImageViewer(QMainWindow):
     def __init__(self):
         super(ImageViewer, self).__init__()
@@ -80,7 +78,6 @@ class ImageViewer(QMainWindow):
         self.scrollArea.setWidgetResizable(fitToWindow)
         if not fitToWindow:
             self.normalSize()
-
         self.updateActions()
 
     def faceDetect(self):
@@ -142,7 +139,9 @@ class ImageViewer(QMainWindow):
                 QMessageBox.information(self, "IOA Image Viewer",
                         "Cannot load %s." % cdr)
                 return
+            self.imageLabel = QLabel()
             self.imageLabel.setPixmap(QPixmap.fromImage(Rimage))
+            self.scaleFactor = 1.0
         except:
             pass
 
@@ -169,6 +168,7 @@ class ImageViewer(QMainWindow):
                 return
 
             self.imageLabel.setPixmap(QPixmap.fromImage(rimage))
+            self.scaleFactor = 1.0
         except:
             pass
 
