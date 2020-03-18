@@ -146,6 +146,14 @@ class ImageViewer(QMainWindow):
             self.imageLabel.setPixmap(QPixmap.fromImage(Rimage))
         except:
             pass
+
+
+            # scale_percent = 100 # percent of original size
+            # width = int(img.shape[1] * scale_percent / 100)
+            # height = int(img.shape[0] * scale_percent / 100)
+            # dim = (width, height)
+            # resized = cv2.resize(img, dim)
+
     
     def imgRotate(self):
         try:
