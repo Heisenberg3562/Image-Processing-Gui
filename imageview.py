@@ -85,7 +85,7 @@ class ImageViewer(QMainWindow):
 
     def faceDetect(self):
         try:
-            face_cascade = cv2.CascadeClassifier(r"C:\Users\Omkar\Desktop\python\Python-60-hours-master\imageProcessing\FaceRcognition-master\haarcascade_frontalface_default.xml")
+            face_cascade = cv2.CascadeClassifier(r"FaceRcognition-master\haarcascade_frontalface_default.xml")
             img = cv2.imread(self.directory)
             grey_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
             
@@ -142,8 +142,9 @@ class ImageViewer(QMainWindow):
                 QMessageBox.information(self, "IOA Image Viewer",
                         "Cannot load %s." % cdr)
                 return
-
+            self.imageLabel.setBackgroundRole(QPalette.Base)
             self.imageLabel.setPixmap(QPixmap.fromImage(Rimage))
+            self.imageLabel.setSizePolicy(QSizePolicy.Ignored, QSizePolicy.Ignored)
         except:
             pass
 
@@ -176,7 +177,7 @@ class ImageViewer(QMainWindow):
     def imgCrop(self):
         try:
             img = cv2.imread(self.directory)
-            face_cascade = cv2.CascadeClassifier(r"C:\Users\Omkar\Desktop\python\Python-60-hours-master\imageProcessing\FaceRcognition-master\haarcascade_frontalface_default.xml")
+            face_cascade = cv2.CascadeClassifier(r"FaceRcognition-master\haarcascade_frontalface_default.xml")
             for x,y,w,h in faces:
                 img = cv2.rectangle(img,(x,y),(x+w, y+w),(0,255,0),1)
                 cropped = img[y:y+h, x:x+w]
