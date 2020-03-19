@@ -156,11 +156,8 @@ class ImageViewer(QMainWindow):
     
     def imgRotate(self):
         try:
-            img = cv2.imread(self.directory)
-            height, width = img.shape[0:2]
-            rotationMatrix = cv2.getRotationMatrix2D((width/2, height/2), 90, .5)
-            rotatedImage = cv2.warpAffine(img, rotationMatrix, (width, height))
-            cv2.imwrite("Rotated.jpg",rotatedImage)
+            colorImage  = Image.open(self.directory)
+            transposed  = colorImage.transpose(Image.ROTATE_90)
             cdr=str(os.getcwd())+'\\Rotated.jpg'
             rimage = QImage(cdr)
             if rimage.isNull():
@@ -169,7 +166,6 @@ class ImageViewer(QMainWindow):
                 return
 
             self.imageLabel.setPixmap(QPixmap.fromImage(rimage))
-            self.scaleFactor = 1.0
         except:
             pass
 
