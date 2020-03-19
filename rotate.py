@@ -6,7 +6,7 @@ from PIL import Image
 
 # Create an Image object from an Image
 
-colorImage  = Image.open(input("Enter The image name:"))
+colorImage  = Image.open("photo.jpg")
 
  
 
@@ -16,13 +16,13 @@ colorImage  = Image.open(input("Enter The image name:"))
 
 # Rotate it by 90 degrees
 
-transposed  = colorImage.transpose(Image.ROTATE_90)
+transposed  = colorImage.transpose(Image.TRANSVERSE)
+# transposed.save
 
- 
 
 # Display the Original Image
 
-#colorImage.show()
+# colorImage.show()
 
  
 
@@ -34,7 +34,7 @@ transposed  = colorImage.transpose(Image.ROTATE_90)
 
 # Display the Image rotated by 90 degrees
 
-transposed.show()
+# transposed.show()
 
- 
+colorImage.show() 
 
