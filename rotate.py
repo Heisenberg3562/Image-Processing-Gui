@@ -12,7 +12,7 @@ colorImage  = Image.open(input("Enter The image name:"))
 
 # Rotate it by 45 degrees
 
-#rotated     = colorImage.rotate(180)
+#rotated     = colorImage.rotate()
 
 # Rotate it by 90 degrees
 
