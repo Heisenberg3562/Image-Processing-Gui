@@ -57,7 +57,7 @@ class WidgetGallery(QDialog):
         self.setLayout(mainLayout)
 
         self.setWindowTitle("Styles")
-        self.changeStyle('Windows')
+        self.changeStyle('Fusion')
 
     def changeStyle(self, styleName):
         QApplication.setStyle(QStyleFactory.create(styleName))
