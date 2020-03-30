@@ -31,6 +31,18 @@ class ImageViewer(QMainWindow):
         self.setWindowTitle("IOA Image Viewer")
         self.resize(800, 600)
 
+    def openImg(self,fileName):
+        self.imageLabel = QLabel()
+        self.imageLabel.setBackgroundRole(QPalette.Base)
+        self.imageLabel.setSizePolicy(QSizePolicy.Ignored, QSizePolicy.Ignored)
+        self.imageLabel.setScaledContents(True)
+        image = QImage(fileName)
+        self.imageLabel.setPixmap(QPixmap.fromImage(image))
+        self.scaleFactor = 1.0
+        self.printAct.setEnabled(True)
+        self.fitToWindowAct.setEnabled(True)
+        self.updateActions()
+
     def open(self):
         fileName, _ = QFileDialog.getOpenFileName(self, "Open File",
                 QDir.currentPath())
@@ -133,16 +145,19 @@ class ImageViewer(QMainWindow):
             resizedImg = cv2.resize(img,(int(iwidth),int(iheight)))
             print(iheight)
             print(iwidth)
+            cv2.imshow("Resized.jpg",resizedImg)
             cv2.imwrite("Resized.jpg",resizedImg)
             cdr=str(os.getcwd())+'\\Resized.jpg'
-            Rimage = QImage(cdr)
-            if Rimage.isNull():
-                QMessageBox.information(self, "IOA Image Viewer",
-                        "Cannot load %s." % cdr)
-                return
-            self.imageLabel.setPixmap(QPixmap.fromImage(Rimage))
-            self.scaleFactor = 1.0
-            self.imageLabel.setScaledContents(True)
+            self.openImg(cdr)
+            # cdr=str(os.getcwd())+'\\Resized.jpg'
+            # Rimage = QImage(cdr)
+            # if Rimage.isNull():
+            #     QMessageBox.information(self, "IOA Image Viewer",
+            #             "Cannot load %s." % cdr)
+            #     return
+            # self.imageLabel.setPixmap(QPixmap.fromImage(Rimage))
+            # self.scaleFactor = 1.0
+            # self.imageLabel.setScaledContents(True)
         except:
             pass
 
