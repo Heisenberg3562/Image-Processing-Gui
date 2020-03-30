@@ -147,7 +147,8 @@ class ImageViewer(QMainWindow):
             print(iwidth)
             cv2.imshow("Resized.jpg",resizedImg)
             cv2.imwrite("Resized.jpg",resizedImg)
-            cdr=str(os.getcwd())+'\\Resized.jpg'
+            cdr=str(QDir.currentPath())+'/Resized.jpg'
+            print(cdr)
             self.openImg(cdr)
             # cdr=str(os.getcwd())+'\\Resized.jpg'
             # Rimage = QImage(cdr)
@@ -173,14 +174,15 @@ class ImageViewer(QMainWindow):
         try:
             colorImage  = Image.open(self.directory)
             transposed  = colorImage.transpose(Image.ROTATE_90)
+            transposed = transposed.save('Rotated.jpg')
             cdr=str(os.getcwd())+'\\Rotated.jpg'
-            rimage = QImage(cdr)
-            if rimage.isNull():
+            image = QImage(cdr)
+            if image.isNull():
                 QMessageBox.information(self, "IOA Image Viewer",
                         "Cannot load %s." % cdr)
                 return
 
-            self.imageLabel.setPixmap(QPixmap.fromImage(rimage))
+            self.imageLabel.setPixmap(QPixmap.fromImage(image))
         except:
             pass
 
