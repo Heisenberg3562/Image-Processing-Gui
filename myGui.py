@@ -167,12 +167,7 @@ class Ui_MainWindow(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
         self.actionOpen = QtWidgets.QAction(shortcut="Ctrl+O",triggered=self.open)
-        self.actionOpen.setObjectName("actionOpen")
-        self.actionExit = QtWidgets.QAction(shortcut="Ctrl+Q",triggered=self.close(True))
-        self.actionExit.setObjectName("actionExit")
         self.menuFile.addAction(self.actionOpen)
-        self.menuFile.addSeparator()
-        self.menuFile.addAction(self.actionExit)
         self.menubar.addAction(self.menuFile.menuAction())
         self.label.setBuddy(self.comboBox)
         self.label_18.setBuddy(self.lineEdit_5)
@@ -235,9 +230,6 @@ class Ui_MainWindow(object):
         self.submitBtn.setText(_translate("MainWindow", "Save"))
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.actionOpen.setText(_translate("MainWindow", "Open"))
-        self.actionExit.setText(_translate("MainWindow", "Exit"))
-
-    
 
 if __name__ == "__main__":
     import sys
